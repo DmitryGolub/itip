@@ -1,6 +1,3 @@
-import java.util.Scanner;
-
-
 public class Palindrome {
     public static String reverseString(String sourceString) {
         String reversedString = "";
@@ -19,10 +16,10 @@ public class Palindrome {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        String string = scanner.nextLine();
-
-        System.out.printf("%s \n", (isPalindrome(string)) ? "Строка является палиндромом": "Строка не является палиндромом");
+        for (int i = 0; i < args.length; i++) {
+            String string = args[i];
+            System.out.printf("%s - %s\n", 
+            (isPalindrome(string)) ? "Строка является палиндромом": "Строка не является палиндромом", string);
+        }
     }
 }
