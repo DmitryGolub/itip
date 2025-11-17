@@ -1,32 +1,34 @@
-// Main.java
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-        // === Задание 1: демонстрация своей HashTable ===
-        HashTable<String, Integer> table = new HashTable<>(8);
+
+        HashTable<String, Integer> table = new HashTable<>(10);
         table.put("one", 1);
         table.put("two", 2);
         table.put("three", 3);
-        table.put("two", 22); // перезапись значения
 
-        System.out.println("size=" + table.size());      // 3
-        System.out.println("get(two)=" + table.get("two")); // 22
-        System.out.println("remove(one)=" + table.remove("one")); // 1
-        System.out.println("isEmpty=" + table.isEmpty()); // false
+        System.out.println(table.get("two"));
+        table.remove("two");
+        System.out.println(table.size());
+        System.out.println(table.isEmpty());
 
-        // === Задание 2 (вариант 3): HashMap для заказов ===
-        OrderManager manager = new OrderManager();
-        Order order1 = new Order("19.10.2025", List.of("Laptop", "Mouse"), "In progress");
-        Order order2 = new Order("19.10.2025", List.of("iPhone"), "In delivery");
+        EmployeeManager manager = new EmployeeManager();
 
-        manager.addOrder(1001, order1);
-        manager.addOrder(1002, order2);
+        Employee emp1 = new Employee("Иванов Иван", "Разработчик", 120000);
+        Employee emp2 = new Employee("Петров Пётр", "Тестировщик", 90000);
 
-        System.out.println(manager.getOrder(1001));
-        manager.updateStatus(1001, "Canceled");
-        manager.removeOrder(1002);
-        System.out.println(manager.getOrder(1001));
-        System.out.println(manager.getOrder(1002)); // null
+        manager.addEmployee(101, emp1);
+        manager.addEmployee(102, emp2);
+
+        System.out.println(manager.getEmployee(101));
+        System.out.println(manager.getEmployee(102));
+
+        manager.updatePosition(101, "Старший разработчик");
+        manager.updateSalary(102, 95000);
+
+        System.out.println(manager.getEmployee(101));
+        System.out.println(manager.getEmployee(102));
+
+        manager.removeEmployee(102);
+        System.out.println(manager.getEmployee(102));
     }
 }
